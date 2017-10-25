@@ -79,6 +79,7 @@ protected:
     void visit(const UIntImm *);
     void visit(const FloatImm *);
     void visit(const StringImm *);
+    void visit(const TestIntImm *);
     void visit(const Cast *);
     void visit(const Variable *);
     void visit(const Add *);

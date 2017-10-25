@@ -1,3 +1,5 @@
+using namespace std;
+
 class test_int{
 private:
 	int64_t val;
@@ -101,6 +103,10 @@ public:
 	//bool operator<(test_int lsVal){
 	//	return val < lsVal.val;
 	//}
+	std::ostream& operator<<(std::ostream& os){
+		os << this->val;
+		return os;
+	}
 
 	// Casting overloading
 	operator int() {
