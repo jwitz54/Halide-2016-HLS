@@ -52,6 +52,7 @@ bool is_const(Expr e) {
     if (e.as<IntImm>() ||
         e.as<UIntImm>() ||
         e.as<FloatImm>() ||
+        e.as<TestIntImm>() ||
         e.as<StringImm>()) {
         return true;
     } else if (const Cast *c = e.as<Cast>()) {

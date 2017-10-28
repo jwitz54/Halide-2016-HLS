@@ -31,6 +31,10 @@ class MonotonicVisitor : public IRVisitor {
         internal_error << "Monotonic on String\n";
     }
 
+    void visit(const TestIntImm *) {
+        result = Monotonic::Constant;
+    }
+
     void visit(const Cast *op) {
         op->value.accept(this);
 

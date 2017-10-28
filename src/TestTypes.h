@@ -1,9 +1,13 @@
+#include <iostream>
+
 using namespace std;
 
 class test_int{
-private:
-	int64_t val;
+//private:
+//	int64_t val;
 public:
+	int64_t val;
+
 	test_int(int64_t initVal){
 		val = initVal;
 	}
@@ -103,10 +107,6 @@ public:
 	//bool operator<(test_int lsVal){
 	//	return val < lsVal.val;
 	//}
-	std::ostream& operator<<(std::ostream& os){
-		os << this->val;
-		return os;
-	}
 
 	// Casting overloading
 	operator int() {
@@ -239,6 +239,8 @@ public:
 	//	return val < lsVal.val;
 	//}
 
+        friend ostream& operator<<(ostream& os, const test_int& osVal);
+
 	// Casting overloading
 	operator int() {
 		return (int)val;
@@ -265,3 +267,8 @@ public:
 	//	return (struct halide_device_interface_t*)(int64_t)val;
 	//}
 };
+
+ostream& operator<<(ostream& os, const test_int& osVal){
+	os << osVal.val;
+	return os;
+}
