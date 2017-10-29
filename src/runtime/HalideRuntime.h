@@ -8,6 +8,7 @@
 #else
 #include "runtime_internal.h"
 #endif
+
 #include "../TestTypes.h"
 
 #ifdef __cplusplus

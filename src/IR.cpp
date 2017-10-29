@@ -537,6 +537,7 @@ template<> void ExprNode<IntImm>::accept(IRVisitor *v) const { v->visit((const I
 template<> void ExprNode<UIntImm>::accept(IRVisitor *v) const { v->visit((const UIntImm *)this); }
 template<> void ExprNode<FloatImm>::accept(IRVisitor *v) const { v->visit((const FloatImm *)this); }
 template<> void ExprNode<StringImm>::accept(IRVisitor *v) const { v->visit((const StringImm *)this); }
+template<> void ExprNode<TestIntImm>::accept(IRVisitor *v) const { v->visit((const TestIntImm *)this); }
 template<> void ExprNode<Cast>::accept(IRVisitor *v) const { v->visit((const Cast *)this); }
 template<> void ExprNode<Variable>::accept(IRVisitor *v) const { v->visit((const Variable *)this); }
 template<> void ExprNode<Add>::accept(IRVisitor *v) const { v->visit((const Add *)this); }

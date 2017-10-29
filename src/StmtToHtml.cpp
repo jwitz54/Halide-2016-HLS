@@ -190,6 +190,12 @@ private:
         stream << close_span();
     }
 
+    void visit(const TestIntImm *op){
+        stream << open_span("TestIntImm Imm");
+        stream << Expr(op);
+        stream << close_span();
+    }
+
     void visit(const Variable *op){
         stream << var(op->name);
     }

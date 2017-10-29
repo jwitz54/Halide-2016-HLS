@@ -361,6 +361,7 @@ SOURCE_FILES = \
   SkipStages.cpp \
   SlidingWindow.cpp \
   Solve.cpp \
+  StmtToHtml.cpp \
   StorageFlattening.cpp \
   StorageFolding.cpp \
   Substitute.cpp \
@@ -378,7 +379,6 @@ SOURCE_FILES = \
   VectorizeLoops.cpp \
   WrapCalls.cpp
 
-  #StmtToHtml.cpp \
 
 BITWRITER_SOURCE_FILES = \
   BitWriter_3_2/BitcodeWriter.cpp \
@@ -499,10 +499,12 @@ HEADER_FILES = \
   SkipStages.h \
   SlidingWindow.h \
   Solve.h \
+  StmtToHtml.h \
   StorageFlattening.h \
   StorageFolding.h \
   Substitute.h \
   Target.h \
+  TestTypes.h \
   Tracing.h \
   TrimNoOps.h \
   Tuple.h \
@@ -516,7 +518,6 @@ HEADER_FILES = \
   VectorizeLoops.h \
   WrapCalls.h
 
-  #StmtToHtml.h \
 
 OBJECTS = $(SOURCE_FILES:%.cpp=$(BUILD_DIR)/%.o)
 OBJECTS += $(BITWRITER_SOURCE_FILES:%.cpp=$(BUILD_DIR)/%.o)
@@ -525,6 +526,11 @@ HEADERS = $(HEADER_FILES:%.h=$(SRC_DIR)/%.h)
 RUNTIME_CPP_COMPONENTS = \
   aarch64_cpu_features \
   arm_cpu_features \
+  android_clock \
+  android_host_cpu_count \
+  android_io \
+  android_opengl_context \
+  android_tempfile \
   cache \
   can_use_target \
   cuda \
@@ -587,13 +593,7 @@ RUNTIME_CPP_COMPONENTS = \
   windows_tempfile \
   windows_threads \
   write_debug_image \
-  x86_cpu_features
-
-  #android_clock \
-  #android_host_cpu_count \
-  #android_io \
-  #android_opengl_context \
-  #android_tempfile \
+  x86_cpu_features  
 
 RUNTIME_LL_COMPONENTS = \
   aarch64 \
