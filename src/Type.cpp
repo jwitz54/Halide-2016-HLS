@@ -110,6 +110,8 @@ bool Type::can_represent(Type other) const {
         return ((other.is_float() && other.bits() <= bits()) ||
                 (bits() == 64 && other.bits() <= 32) ||
                 (bits() == 32 && other.bits() <= 16));
+    } else if (is_test_int()) {
+        return (other.is_test_int() && other.bits() <= bits());
     } else {
         return false;
     }
@@ -131,6 +133,8 @@ bool Type::can_represent(int64_t x) const {
         default:
             return false;
         }
+    } else if (is_test_int()) {
+        return x >= min_int(bits()) && x <= max_int(bits());
     } else {
         return false;
     }
@@ -152,6 +156,8 @@ bool Type::can_represent(uint64_t x) const {
         default:
             return false;
         }
+    } else if (is_test_int()) {
+        return x <= (uint64_t)(max_int(bits()));
     } else {
         return false;
     }

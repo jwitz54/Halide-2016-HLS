@@ -260,6 +260,8 @@ string type_to_c_type(Type type, bool include_space, bool c_plus_plus = true) {
                 }
             }
         }
+    } else if (type.is_test_int()){
+        oss << "test_int";
     } else {
         switch (type.bits()) {
         case 1:
