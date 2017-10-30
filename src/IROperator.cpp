@@ -252,7 +252,7 @@ Expr make_const_helper(Type t, T val) {
     } else if (t.is_float()) {
         return FloatImm::make(t, (double)val);
     } else if (t.is_test_int()) {
-        return TestIntImm::make(t, (test_int)val);
+        return TestIntImm::make(t, (int64_t)val);
     } else {
         internal_error << "Can't make a constant of type " << t << "\n";
         return Expr();

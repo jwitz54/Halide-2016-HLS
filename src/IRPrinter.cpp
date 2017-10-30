@@ -30,7 +30,9 @@ ostream &operator<<(ostream &out, const Type &type) {
         out << "test_int";
         break;
     }
-    out << type.bits();
+    if(type.code() != Type::TestInt){
+        out << type.bits();
+    }
     if (type.lanes() > 1) out << 'x' << type.lanes();
     return out;
 }

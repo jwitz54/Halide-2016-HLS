@@ -225,6 +225,9 @@ inline Expr operator+(Expr a, Expr b) {
  * cannot be represented in the type of the expression. */
 // @{
 inline Expr operator+(Expr a, int b) {
+    //if (a.type().code() == 4){
+    //    printf("making add with int: %d\n", b);
+    //};
     user_assert(a.defined()) << "operator+ of undefined Expr\n";
     Internal::check_representable(a.type(), b);
     return Internal::Add::make(a, Internal::make_const(a.type(), b));
