@@ -1157,7 +1157,7 @@ struct halide_type_of_helper<bool> {
 
 template<>
 struct halide_type_of_helper<test_int> {
-    operator halide_type_t() { return halide_type_t(halide_type_test_int, 1); }
+    operator halide_type_t() { return halide_type_t(halide_type_test_int, 64); }
 };
 
 }

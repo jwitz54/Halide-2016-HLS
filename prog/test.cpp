@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 
     Var x;
     Func brighter;
-    brighter(x) = input(x) + (test_int)1;
+    brighter(x) = input(x) + 1;
 
     brighter.compile_to_c("brighter.cpp", {}, "brighter");
     //brighter.compile_to_static_library("brighter", {}, "brighter");
