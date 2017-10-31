@@ -53,7 +53,8 @@ const string headers =
     "#include <assert.h>\n"
     "#include <string.h>\n"
     "#include <stdio.h>\n"
-    "#include <stdint.h>\n";
+    "#include <stdint.h>\n"
+    "#include \"../src/TestTypes.h\"\n";
 
 const string globals =
     "extern \"C\" {\n"

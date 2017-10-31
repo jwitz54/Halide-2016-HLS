@@ -258,6 +258,8 @@ FILTERS_DIR = $(BUILD_DIR)/filters
 RUNTIMES_DIR = $(BUILD_DIR)/runtimes
 TMP_DIR     = $(BUILD_DIR)/tmp
 
+enable_sim: $(RUNTIMES_DIR)/runtime_host.a
+
 SOURCE_FILES = \
   AddImageChecks.cpp \
   AddParameterChecks.cpp \

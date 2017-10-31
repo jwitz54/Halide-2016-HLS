@@ -18,7 +18,7 @@ int main(){
 	////Halide::Buffer<uint64_t> output(10);	
 	////struct halide_buffer_t *output;
 	//brighter(&_output_buffer_);
-	Halide::Runtime::Buffer<int64_t> output(10);
+	Halide::Buffer<int64_t> output(10);
 	brighter(output);
 	for (int i = 0; i < 10; i++) {
 		std::cout << output(i) << std::endl;
