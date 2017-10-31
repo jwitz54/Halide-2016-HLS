@@ -16,9 +16,9 @@ int main(int argc, char **argv) {
     Func brighter;
     brighter(x) = input(x) + 1;
 
-    //brighter.compile_to_c("brighter.cpp", {}, "brighter");
-    //brighter.compile_to_header("brighter.h", {}, "brighter");
-    brighter.compile_to_static_library("brighter", {}, "brighter");
+    brighter.compile_to_c("brighter.cpp", {}, "brighter");
+    brighter.compile_to_header("brighter.h", {}, "brighter");
+    //brighter.compile_to_static_library("brighter", {}, "brighter");
 
     printf("Success!\n");
     return 0;

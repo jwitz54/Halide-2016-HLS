@@ -326,7 +326,7 @@ int brighter(buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  (void)_brighter_stride_3;
  const int32_t _brighter_elem_size = _brighter_buffer->elem_size;
  (void)_brighter_elem_size;
- int32_t _45 = __brighter(_brighter_buffer, &_b0_buffer);
+ int32_t _45 = __brighter(_brighter_buffer, _b0);
  bool _46 = _45 == 0;
  if (!_46)  {
   return _45;
