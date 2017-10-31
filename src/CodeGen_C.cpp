@@ -871,6 +871,10 @@ void CodeGen_C::visit(const IntImm *op) {
     }
 }
 
+void CodeGen_C::visit(const TestIntImm *op) {
+     print_assignment(op->type, "(" + print_type(op->type) + ")(" + std::to_string(op->value.val) + ")");
+}
+
 void CodeGen_C::visit(const UIntImm *op) {
     print_assignment(op->type, "(" + print_type(op->type) + ")(" + std::to_string(op->value) + ")");
 }

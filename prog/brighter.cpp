@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>
+#include "../src/TestTypes.h"
 #ifndef HALIDE_ATTRIBUTE_ALIGN
   #ifdef _MSC_VER
     #define HALIDE_ATTRIBUTE_ALIGN(x) __declspec(align(x))
@@ -285,8 +286,9 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
   {
    int32_t _41 = _brighter_s0_x - _brighter_min_0;
    test_int _42 = _b0[_brighter_s0_x];
-(test_int)1   test_int _43 = _42 + $$ BAD ID $$;
-   _brighter[_41] = _43;
+   test_int _43 = (test_int)(1);
+   test_int _44 = _42 + _43;
+   _brighter[_41] = _44;
   } // for _brighter_s0_x
  } // if _12
  return 0;
@@ -324,10 +326,10 @@ int brighter(buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  (void)_brighter_stride_3;
  const int32_t _brighter_elem_size = _brighter_buffer->elem_size;
  (void)_brighter_elem_size;
- int32_t _44 = __brighter(_brighter_buffer, _b0_buffer);
- bool _45 = _44 == 0;
- if (!_45)  {
-  return _44;
+ int32_t _45 = __brighter(_brighter_buffer, _b0_buffer);
+ bool _46 = _45 == 0;
+ if (!_46)  {
+  return _45;
  }
  return 0;
 }
