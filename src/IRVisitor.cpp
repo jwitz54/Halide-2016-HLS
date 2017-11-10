@@ -18,7 +18,7 @@ void IRVisitor::visit(const FloatImm *) {
 void IRVisitor::visit(const StringImm *) {
 }
 
-void IRVisitor::visit(const TestIntImm *) {
+void IRVisitor::visit(const TestIntImm<int64_t> *) {
 }
 
 void IRVisitor::visit(const Cast *op) {

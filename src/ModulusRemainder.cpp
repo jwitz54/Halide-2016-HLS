@@ -23,7 +23,7 @@ public:
     void visit(const UIntImm *);
     void visit(const FloatImm *);
     void visit(const StringImm *);
-    void visit(const TestIntImm *);
+    void visit(const TestIntImm<int64_t> *);
     void visit(const Cast *);
     void visit(const Variable *);
     void visit(const Add *);

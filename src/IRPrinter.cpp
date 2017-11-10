@@ -280,7 +280,7 @@ void IRPrinter::visit(const StringImm *op) {
     stream << '"';
 }
 
-void IRPrinter::visit(const TestIntImm *op) {
+void IRPrinter::visit(const TestIntImm<int64_t> *op) {
     stream << "(" << op->type << ")" << op->value;
 }
 

@@ -1160,6 +1160,11 @@ struct halide_type_of_helper<test_int> {
     operator halide_type_t() { return halide_type_t(halide_type_test_int, 64); }
 };
 
+template<>
+struct halide_type_of_helper<test_int_t<int64_t>> {
+    operator halide_type_t() { return halide_type_t(halide_type_test_int, 64); }
+};
+
 }
 
 /** Construct the halide equivalent of a C type */

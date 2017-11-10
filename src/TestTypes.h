@@ -8,12 +8,16 @@
 class test_int{
 public:
 	int64_t val;
+	int64_t bits;
+        char sign;
 
 	test_int(int64_t initVal){
 		val = initVal;
 	}
 	test_int(void){
 		val = 0;
+		bits = 32;
+		sign = 'u';
 	}
 
 	#ifndef COMPILING_HALIDE_RUNTIME
@@ -38,18 +42,18 @@ public:
 	test_int_t(int64_t initVal){
 		val = (T)initVal;
 	}
-	test_int_t(int initVal){
-		val = (T)initVal;
-	}
-	test_int_t(struct halide_buffer_t* buf){
-		val = (T)buf;		
-	}
+	//test_int_t(int initVal){
+	//	val = (T)initVal;
+	//}
+	//test_int_t(struct halide_buffer_t* buf){
+	//	val = (T)buf;		
+	//}
 	test_int_t(void){
 		val = 0;
 	}
 
 	#ifndef COMPILING_HALIDE_RUNTIME
-        //friend std::ostream& operator<<(std::ostream& os, const test_int& osVal);
+        friend std::ostream& operator<<(std::ostream& os, const test_int& osVal);
 	#endif
 
 	// Casting overloading

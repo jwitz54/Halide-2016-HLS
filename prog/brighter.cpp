@@ -284,8 +284,7 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
   // produce brighter
   for (int _brighter_s0_x = _brighter_min_0; _brighter_s0_x < _brighter_min_0 + _brighter_extent_0; _brighter_s0_x++)
   {
-   int32_t _41 = _brighter_s0_x - _brighter_min_0;
-   test_int _42 = _b0[_brighter_s0_x];
+   int32_t _41 = _brighter_s0_x - _brighter_min_0; test_int _42 = _b0[_brighter_s0_x];
    test_int _43 = (test_int)(1);
    test_int _44 = _42 + _43;
    _brighter[_41] = _44;
@@ -326,7 +325,7 @@ int brighter(buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  (void)_brighter_stride_3;
  const int32_t _brighter_elem_size = _brighter_buffer->elem_size;
  (void)_brighter_elem_size;
- int32_t _45 = __brighter(_brighter_buffer, _b0);
+ int32_t _45 = __brighter(_brighter_buffer, &_b0_buffer);
  bool _46 = _45 == 0;
  if (!_46)  {
   return _45;
