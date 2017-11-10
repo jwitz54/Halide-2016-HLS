@@ -249,7 +249,7 @@ void IRComparer::visit(const StringImm *op) {
     compare_names(e->value, op->value);
 }
 
-void IRComparer::visit(const TestIntImm *op) {
+void IRComparer::visit(const TestIntImm<int64_t> *op) {
     const TestIntImm *e = expr.as<TestIntImm>();
     compare_scalar(e->value, op->value);
 }
