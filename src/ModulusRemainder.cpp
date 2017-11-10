@@ -158,7 +158,7 @@ void ComputeModulusRemainder::visit(const StringImm *) {
     internal_error << "modulus_remainder of string\n";
 }
 
-void ComputeModulusRemainder::visit(const TestIntImm *op) {
+void ComputeModulusRemainder::visit(const TestIntImm<int64_t> *op) {
     internal_error << "modulus_remainder of testimm\n";
 }
 

@@ -254,8 +254,8 @@ struct StringImm : public ExprNode<StringImm> {
 };
 
 /** Test Integer constants */
-template <class T>
-struct TestIntImm : public ExprNode<TestIntImm> {
+template <typename T>
+struct TestIntImm : public ExprNode<TestIntImm<T>> {
     //test_int value;
     T value;
 

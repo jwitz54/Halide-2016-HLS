@@ -258,7 +258,7 @@ void IRGraphVisitor::visit(const FloatImm *) {
 void IRGraphVisitor::visit(const StringImm *) {
 }
 
-void IRGraphVisitor::visit(const TestIntImm *) {
+void IRGraphVisitor::visit(const TestIntImm<int64_t> *) {
 }
 
 void IRGraphVisitor::visit(const Cast *op) {
