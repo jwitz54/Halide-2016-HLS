@@ -250,7 +250,7 @@ void IRComparer::visit(const StringImm *op) {
 }
 
 void IRComparer::visit(const TestIntImm<int64_t> *op) {
-    const TestIntImm *e = expr.as<TestIntImm>();
+    const TestIntImm<int64_t> *e = expr.as<TestIntImm<int64_t>>();
     compare_scalar(e->value, op->value);
 }
 

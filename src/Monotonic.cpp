@@ -31,7 +31,7 @@ class MonotonicVisitor : public IRVisitor {
         internal_error << "Monotonic on String\n";
     }
 
-    void visit(const TestIntImm *) {
+    void visit(const TestIntImm<int64_t> *) {
         result = Monotonic::Constant;
     }
 

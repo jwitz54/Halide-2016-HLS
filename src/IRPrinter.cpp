@@ -281,7 +281,7 @@ void IRPrinter::visit(const StringImm *op) {
 }
 
 void IRPrinter::visit(const TestIntImm<int64_t> *op) {
-    stream << "(" << op->type << ")" << op->value;
+    stream << "(" << op->type << ")" << op->value.val;
 }
 
 void IRPrinter::visit(const Cast *op) {

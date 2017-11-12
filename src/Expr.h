@@ -257,7 +257,7 @@ struct StringImm : public ExprNode<StringImm> {
 template <typename T>
 struct TestIntImm : public ExprNode<TestIntImm<T>> {
     //test_int value;
-    T value;
+    test_int_t<T> value;
 
     static const TestIntImm *make(Type t, T value) {
         internal_assert(t.is_test_int() && t.is_scalar())

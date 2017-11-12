@@ -53,7 +53,7 @@ public:
 	}
 
 	#ifndef COMPILING_HALIDE_RUNTIME
-        friend std::ostream& operator<<(std::ostream& os, const test_int& osVal);
+        //friend std::ostream& operator<<(std::ostream& os, const test_int_t& osVal);
 	#endif
 
 	// Casting overloading
@@ -73,5 +73,10 @@ inline std::ostream& operator<<(std::ostream& os, const test_int& osVal){
 	os << osVal.val;
 	return os;
 }
+//template <class T>
+//inline std::ostream& operator<<(std::ostream& os, const test_int_t<T>& osVal){
+//	os << osVal.val;
+//	return os;
+//}
 #endif
 #endif
