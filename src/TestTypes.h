@@ -72,6 +72,7 @@ public:
 inline std::ostream& operator<<(std::ostream& os, const test_int& osVal){
 	os << osVal.val;
 	return os;
+
 }
 //template <class T>
 //inline std::ostream& operator<<(std::ostream& os, const test_int_t<T>& osVal){
