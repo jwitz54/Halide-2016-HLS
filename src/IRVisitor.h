@@ -91,7 +91,7 @@ public:
     EXPORT virtual void visit(const UIntImm *);
     EXPORT virtual void visit(const FloatImm *);
     EXPORT virtual void visit(const StringImm *);
-    EXPORT virtual void visit(const TestIntImm<int64_t> *);
+    EXPORT virtual void visit(const TestIntImm *);
     EXPORT virtual void visit(const Cast *);
     EXPORT virtual void visit(const Variable *);
     EXPORT virtual void visit(const Add *);
