@@ -23,7 +23,7 @@ public:
     void visit(const UIntImm *);
     void visit(const FloatImm *);
     void visit(const StringImm *);
-    void visit(const TestIntImm<int64_t> *);
+    void visit(const TestIntImm *);
     void visit(const Cast *);
     void visit(const Variable *);
     void visit(const Add *);
@@ -158,7 +158,7 @@ void ComputeModulusRemainder::visit(const StringImm *) {
     internal_error << "modulus_remainder of string\n";
 }
 
-void ComputeModulusRemainder::visit(const TestIntImm<int64_t> *op) {
+void ComputeModulusRemainder::visit(const TestIntImm *op) {
     internal_error << "modulus_remainder of testimm\n";
 }
 

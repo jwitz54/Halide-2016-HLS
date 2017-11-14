@@ -8,16 +8,12 @@
 class test_int{
 public:
 	int64_t val;
-	int64_t bits;
-        char sign;
 
 	test_int(int64_t initVal){
 		val = initVal;
 	}
 	test_int(void){
 		val = 0;
-		bits = 32;
-		sign = 'u';
 	}
 
 	#ifndef COMPILING_HALIDE_RUNTIME

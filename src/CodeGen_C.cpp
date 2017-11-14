@@ -262,7 +262,7 @@ string type_to_c_type(Type type, bool include_space, bool c_plus_plus = true) {
             }
         }
     } else if (type.is_test_int()){
-        oss << "test_int";
+        oss << "test_int_t<int" << type.bits() << "_t>";
     } else {
         switch (type.bits()) {
         case 1:
@@ -872,7 +872,7 @@ void CodeGen_C::visit(const IntImm *op) {
     }
 }
 
-void CodeGen_C::visit(const TestIntImm<int64_t> *op) {
+void CodeGen_C::visit(const TestIntImm *op) {
      print_assignment(op->type, "(" + print_type(op->type) + ")(" + std::to_string(op->value.val) + ")");
 }
 

@@ -146,7 +146,7 @@ protected:
     void visit(const UIntImm *);
     void visit(const StringImm *);
     void visit(const FloatImm *);
-    void visit(const TestIntImm<int64_t> *);
+    void visit(const TestIntImm *);
     void visit(const Cast *);
     void visit(const Add *);
     void visit(const Sub *);

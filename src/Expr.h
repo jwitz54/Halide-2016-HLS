@@ -254,12 +254,11 @@ struct StringImm : public ExprNode<StringImm> {
 };
 
 /** Test Integer constants */
-template <typename T>
-struct TestIntImm : public ExprNode<TestIntImm<T>> {
+struct TestIntImm : public ExprNode<TestIntImm> {
     //test_int value;
-    test_int_t<T> value;
+    test_int value;
 
-    static const TestIntImm *make(Type t, T value) {
+    static const TestIntImm *make(Type t,  test_int value) {
         internal_assert(t.is_test_int() && t.is_scalar())
             << "TestIntImm must be a scalar Int\n";
 

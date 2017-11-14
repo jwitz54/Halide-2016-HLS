@@ -190,7 +190,7 @@ private:
         stream << close_span();
     }
 
-    void visit(const TestIntImm<int64_t> *op){
+    void visit(const TestIntImm *op){
         stream << open_span("TestIntImm Imm");
         stream << Expr(op);
         stream << close_span();
