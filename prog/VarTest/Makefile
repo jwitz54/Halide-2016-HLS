@@ -6,4 +6,4 @@ halidemake:
 	LD_LIBRARY_PATH=../../bin ./test
 
 cmake:
-	g++ -o main main.cpp brighter.cpp ../../bin/build/runtimes/runtime_host.a -std=c++11 -I .. -ldl -lpthread	
+	g++ -o main main.cpp brighter.cpp ../../bin/build/runtimes/runtime_host.a -std=c++11 -I .. -I /opt/Xilinx/Vivado_HLS/2015.1/include/ -ldl -lpthread	

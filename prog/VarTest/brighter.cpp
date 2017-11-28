@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>
+#include "ap_int.h"
 #include "../src/TestTypes.h"
 #ifndef HALIDE_ATTRIBUTE_ALIGN
   #ifdef _MSC_VER
@@ -143,7 +144,7 @@ int32_t  halide_error_constraints_make_required_region_smaller(void *, const cha
 
 
 static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_FUNCTION_ATTRS {
- test_int_t<int8_t> *_brighter = (test_int_t<int8_t> *)(_brighter_buffer->host);
+ ap_int<8> *_brighter = (ap_int<8> *)(_brighter_buffer->host);
  (void)_brighter;
  const bool _brighter_host_and_dev_are_null = (_brighter_buffer->host == nullptr) && (_brighter_buffer->dev == 0);
  (void)_brighter_host_and_dev_are_null;
@@ -236,7 +237,7 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
   }
   bool _15 = _brighter_elem_size == 1;
   if (!_15)   {
-   int32_t _16 = halide_error_bad_elem_size(nullptr, "Output buffer brighter", "test_int_t<int8_t>", _brighter_elem_size, 1);
+   int32_t _16 = halide_error_bad_elem_size(nullptr, "Output buffer brighter", "ap_int<8>", _brighter_elem_size, 1);
    return _16;
   }
   bool _17 = _b0_min_0 <= _brighter_min_0;
@@ -286,9 +287,9 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
   {
    int32_t _41 = _brighter_s0_x - _brighter_min_0;
    int8_t _42 = _b0[_brighter_s0_x];
-   test_int_t<int8_t> _43 = (test_int_t<int8_t>)(_42);
-   test_int_t<int8_t> _44 = (test_int_t<int8_t>)(1);
-   test_int_t<int8_t> _45 = _43 + _44;
+   ap_int<8> _43 = (ap_int<8>)(_42);
+   ap_int<8> _44 = (ap_int<8>)(1);
+   ap_int<8> _45 = _43 + _44;
    _brighter[_41] = _45;
   } // for _brighter_s0_x
  } // if _12
@@ -297,7 +298,7 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
 
 
 int brighter(buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
- test_int_t<int8_t> *_brighter = (test_int_t<int8_t> *)(_brighter_buffer->host);
+ ap_int<8> *_brighter = (ap_int<8> *)(_brighter_buffer->host);
  (void)_brighter;
  const bool _brighter_host_and_dev_are_null = (_brighter_buffer->host == nullptr) && (_brighter_buffer->dev == 0);
  (void)_brighter_host_and_dev_are_null;
