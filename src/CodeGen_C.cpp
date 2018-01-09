@@ -54,6 +54,7 @@ const string headers =
     "#include <string.h>\n"
     "#include <stdio.h>\n"
     "#include <stdint.h>\n"
+    "#include \"ap_int.h\"\n"
     "#include \"../src/TestTypes.h\"\n";
 
 const string globals =
@@ -262,7 +263,8 @@ string type_to_c_type(Type type, bool include_space, bool c_plus_plus = true) {
             }
         }
     } else if (type.is_test_int()){
-        oss << "test_int_t<int" << type.bits() << "_t>";
+        oss << "ap_int<" << type.bits() << ">";
+        //oss << "test_int_t<int" << type.bits() << "_t>";
     } else {
         switch (type.bits()) {
         case 1:

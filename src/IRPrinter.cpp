@@ -27,7 +27,8 @@ ostream &operator<<(ostream &out, const Type &type) {
         out << "handle";
         break;
     case Type::TestInt:
-        out << "test_int_t<int" << type.bits() << "_t>";
+        out << "ap_int<" << type.bits() << ">";
+        //out << "test_int_t<int" << type.bits() << "_t>";
         break;
     }
     if(type.code() != Type::TestInt){

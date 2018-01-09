@@ -38,12 +38,7 @@ public:
 	test_int_t(int64_t initVal){
 		val = (T)initVal;
 	}
-	//test_int_t(int initVal){
-	//	val = (T)initVal;
-	//}
-	//test_int_t(struct halide_buffer_t* buf){
-	//	val = (T)buf;		
-	//}
+
 	test_int_t(void){
 		val = 0;
 	}
@@ -56,12 +51,31 @@ public:
 	operator int() {
 		return (int)val;
 	}
-	//explicit operator void*() {
-	//	return (void*)&val;
-	//}
-	//explicit operator struct halide_device_interface_t*() {
-	//	return (struct halide_device_interface_t*)(int64_t)val;
-	//}
+};
+
+template <int T> 
+class test_int_i{
+public:
+	int val;
+	int size;
+	test_int_t(int initVal){
+		val = (int)initVal;
+		size = T;
+	}
+
+	test_int_t(void){
+		val = 0;
+		size = T;
+	}
+
+	#ifndef COMPILING_HALIDE_RUNTIME
+        //friend std::ostream& operator<<(std::ostream& os, const test_int_t& osVal);
+	#endif
+
+	// Casting overloading
+	operator int() {
+		return (int)val;
+	}
 };
 
 #ifndef COMPILING_HALIDE_RUNTIME
