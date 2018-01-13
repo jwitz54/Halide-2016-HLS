@@ -58,12 +58,12 @@ class test_int_i{
 public:
 	int val;
 	int size;
-	test_int_t(int initVal){
+	test_int_i(int initVal){
 		val = (int)initVal;
 		size = T;
 	}
 
-	test_int_t(void){
+	test_int_i(void){
 		val = 0;
 		size = T;
 	}
