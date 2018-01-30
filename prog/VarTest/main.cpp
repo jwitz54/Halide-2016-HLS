@@ -12,7 +12,7 @@
 //};
 
 int main(){
-	Halide::Buffer<int8_t> output(10);
+	Halide::Buffer<int32_t> output(10);
 
 	brighter(output);
 	for (int i = 0; i < 10; i++) {

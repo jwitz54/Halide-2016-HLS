@@ -5,9 +5,9 @@ using namespace Halide;
 
 int main(int argc, char **argv) {
 
-    Buffer<test_int_i<8> > input(10);
+    Buffer<test_int_i<32> > input(10);
     for (int i = 0; i < 10; i++){
-        input(i) = 0;
+        input(i) = 1;
     }
 
     Var x;
