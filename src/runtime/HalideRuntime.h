@@ -1165,7 +1165,7 @@ struct halide_type_of_helper< test_int_t<D> > {
     operator halide_type_t() { return halide_type_t(halide_type_test_int, sizeof(D)/8); }
 };
 template<int D>
-struct halide_type_of_helper< test_int_i<D> > {
+struct halide_type_of_helper< ap_int_halide<D> > {
     operator halide_type_t() { return halide_type_t(halide_type_test_int, D); }
 };
 

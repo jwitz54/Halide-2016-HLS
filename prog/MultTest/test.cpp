@@ -5,23 +5,25 @@ using namespace Halide;
 
 int main(int argc, char **argv) {
 
-    Buffer<ap_int_halide<32> > input(10);
+    Buffer<ap_int_halide<32> > input1(10);
+    Buffer<ap_int_halide<32> > input2(10);
     for (int i = 0; i < 10; i++){
-        input(i) = 1;
+        input1(i) = 10;
+        input2(i) = 10;
     }
 
     Var x;
-    Func brighter;
+    Func mult;
     //Func toTestInt;
     //toTestInt(x) = cast(TestInt(8), input(x)); 
     //brighter(x) = toTestInt(x) + 1;
     //brighter(x) = cast(TestInt(8), input(x)) + 1;
-    brighter(x) = input(x) + 1;
+    mult(x) = input1(x) * input2(x) ;
     //brighter(x) = input(x) + 1;
 
-    brighter.compile_to_c("brighter.cpp", {}, "brighter");
-    brighter.compile_to_header("brighter.h", {}, "brighter");
-    //brighter.compile_to_static_library("brighter", {}, "brighter");
+    mult.compile_to_c("mult.cpp", {}, "mult");
+    mult.compile_to_header("mult.h", {}, "mult");
+    //mult.compile_to_static_library("mult", {}, "mult");
 
     printf("Success!\n");
     return 0;

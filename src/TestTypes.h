@@ -54,16 +54,16 @@ public:
 };
 
 template <int T> 
-class test_int_i{
+class ap_int_halide{
 public:
 	int val;
 	//int size;
-	test_int_i(int initVal){
+	ap_int_halide(int initVal){
 		val = (int)initVal;
 		//size = T;
 	}
 
-	test_int_i(void){
+	ap_int_halide(void){
 		val = 0;
 		//size = T;
 	}
