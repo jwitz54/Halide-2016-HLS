@@ -222,7 +222,8 @@ typedef enum halide_type_code_t
     halide_type_uint = 1,  //!< unsigned integers
     halide_type_float = 2, //!< floating point numbers
     halide_type_handle = 3, //!< opaque pointer type (void *)
-    halide_type_test_int = 4
+    halide_type_test_int = 4,
+    halide_type_fixed = 5
 } halide_type_code_t;
 
 // Note that while __attribute__ can go before or after the declaration,
@@ -254,18 +255,31 @@ struct halide_type_t {
     /** How many elements in a vector. This is 1 for scalar types. */
     HALIDE_ATTRIBUTE_ALIGN(2) uint16_t lanes;
 
+    /** For fixed variable types. */
+    HALIDE_ATTRIBUTE_ALIGN(1) uint8_t int_bits;
+    HALIDE_ATTRIBUTE_ALIGN(1) uint8_t frac_bits;
+
+
 #ifdef __cplusplus
     /** Construct a runtime representation of a Halide type from:
      * code: The fundamental type from an enum.
      * bits: The bit size of one element.
      * lanes: The number of vector elements in the type. */
-    halide_type_t(halide_type_code_t code, uint8_t bits, uint16_t lanes = 1)
-        : code(code), bits(bits), lanes(lanes) {
+    halide_type_t(halide_type_code_t code, uint8_t bits, uint16_t lanes = 1, uint8_t int_bits = 0, uint8_t frac_bits = 0)
+        : code(code), bits(bits), lanes(lanes), int_bits(int_bits), frac_bits(frac_bits) {
     }
+
+    //halide_type_t(halide_type_code_t code, uint8_t int_bits, uint8_t frac_bits, uint16_t lanes){
+        //this->code = code;
+        //this->int_bits = int_bits;
+        //this->frac_bits = frac_bits;
+        //this->lanes = lanes; 
+    //}
 
     /** Default constructor is required e.g. to declare halide_trace_event
      * instances. */
-    halide_type_t() : code((halide_type_code_t)0), bits(0), lanes(0) {}
+    halide_type_t() : code((halide_type_code_t)0), bits(0), lanes(0) {
+    }
 
     /** Compare two types for equality. */
     bool operator==(const halide_type_t &other) const {
@@ -1160,13 +1174,14 @@ struct halide_type_of_helper<test_int> {
     operator halide_type_t() { return halide_type_t(halide_type_test_int, 64); }
 };
 
-template<typename D>
-struct halide_type_of_helper< test_int_t<D> > {
-    operator halide_type_t() { return halide_type_t(halide_type_test_int, sizeof(D)/8); }
-};
 template<int D>
 struct halide_type_of_helper< ap_int_halide<D> > {
     operator halide_type_t() { return halide_type_t(halide_type_test_int, D); }
+};
+
+template<int D, int E>
+struct halide_type_of_helper< ap_fixed_halide<D, E> > {
+    operator halide_type_t() { return halide_type_t(halide_type_fixed, 1, D, E); }
 };
 
 }

@@ -135,6 +135,8 @@ bool Type::can_represent(int64_t x) const {
         }
     } else if (is_test_int()) {
         return x >= min_int(bits()) && x <= max_int(bits());
+    } else if (is_ap_fixed()) {
+        return x >= min_int(int_bits()) && x <= max_int(int_bits());
     } else {
         return false;
     }

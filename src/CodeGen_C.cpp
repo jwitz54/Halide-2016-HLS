@@ -265,6 +265,9 @@ string type_to_c_type(Type type, bool include_space, bool c_plus_plus = true) {
     } else if (type.is_test_int()){
         oss << "ap_int<" << type.bits() << ">";
         //oss << "test_int_t<int" << type.bits() << "_t>";
+    } else if (type.is_ap_fixed()){
+        oss << "ap_fixed<" << type.int_bits() << "," << type.frac_bits() << ">";
+        //oss << "test_int_t<int" << type.bits() << "_t>";
     } else {
         switch (type.bits()) {
         case 1:

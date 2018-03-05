@@ -30,6 +30,10 @@ ostream &operator<<(ostream &out, const Type &type) {
         out << "ap_int<" << type.bits() << ">";
         //out << "test_int_t<int" << type.bits() << "_t>";
         break;
+    case Type::ApFixed:
+        out << "ap_fixed<" << type.int_bits() << "," << type.frac_bits() << ">";
+        //out << "test_int_t<int" << type.bits() << "_t>";
+        break;
     }
     if(type.code() != Type::TestInt){
         out << type.bits();

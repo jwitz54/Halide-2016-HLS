@@ -78,6 +78,24 @@ public:
 	}
 };
 
+template <int T, int U> 
+class ap_fixed_halide{
+public:
+	float val;
+	ap_fixed_halide(float initVal){
+		val = (float)initVal;
+	}
+
+	ap_fixed_halide(void){
+		val = 0;
+	}
+
+	// Casting overloading
+	operator float() {
+		return (float)val;
+	}
+};
+
 #ifndef COMPILING_HALIDE_RUNTIME
 inline std::ostream& operator<<(std::ostream& os, const test_int& osVal){
 	os << osVal.val;

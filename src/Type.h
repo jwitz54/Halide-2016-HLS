@@ -270,6 +270,7 @@ struct Type {
     static const halide_type_code_t Float = halide_type_float;
     static const halide_type_code_t Handle = halide_type_handle;
     static const halide_type_code_t TestInt = halide_type_test_int;
+    static const halide_type_code_t ApFixed = halide_type_fixed;
     // @}
 
     /** The number of bytes required to store a single scalar value of this type. Ignores vector lanes. */
@@ -308,6 +309,12 @@ struct Type {
 
     /** Return the number of vector elements in this type. */
     int lanes() const { return type.lanes; }
+
+    /** Return the integer bit size of a single element of this type. */
+    int int_bits() const { return type.int_bits; }
+
+    /** Return the fractional bit size of a single element of this type. */
+    int frac_bits() const { return type.frac_bits; }
 
     /** Return Type with same number of bits and lanes, but new_code for a type code. */
     Type with_code(halide_type_code_t new_code) const {
@@ -353,6 +360,9 @@ struct Type {
 
     /** Is this type an test_int type (void *) */
     bool is_test_int() const {return code() == TestInt;}
+
+    /** Is this type an ap_fixed type (void *) */
+    bool is_ap_fixed() const {return code() == ApFixed;}
 
     /** Check that the type name of two handles matches. */
     EXPORT bool same_handle_type(const Type &other) const;

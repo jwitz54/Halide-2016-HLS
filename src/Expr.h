@@ -27,6 +27,7 @@ enum class IRNodeType {
     FloatImm,
     StringImm,
     TestIntImm,
+    ApFixedImm,
     Cast,
     Variable,
     Add,
@@ -269,6 +270,24 @@ struct TestIntImm : public ExprNode<TestIntImm> {
     }
 
     static const IRNodeType _type_info = IRNodeType::TestIntImm;
+};
+
+/** Fixed constants */
+struct ApFixedImm : public ExprNode<ApFixedImm> {
+    //test_int value;
+    float value;
+
+    static const TestIntImm *make(Type t,  test_int value) {
+        internal_assert(t.is_ap_fixed() && t.is_scalar())
+            << "TestIntImm must be a scalar Int\n";
+
+        TestIntImm *node = new TestIntImm;
+        node->type = t;
+        node->value = value;
+        return node;
+    }
+
+    static const IRNodeType _type_info = IRNodeType::ApFixedImm;
 };
 
 }  // namespace Internal
