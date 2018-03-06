@@ -35,6 +35,10 @@ class MonotonicVisitor : public IRVisitor {
         result = Monotonic::Constant;
     }
 
+    void visit(const ApFixedImm *) {
+        result = Monotonic::Constant;
+    }
+
     void visit(const Cast *op) {
         op->value.accept(this);
 

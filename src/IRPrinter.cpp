@@ -289,6 +289,10 @@ void IRPrinter::visit(const TestIntImm *op) {
     stream << "(" << op->type << ")" << op->value.val;
 }
 
+void IRPrinter::visit(const ApFixedImm *op) {
+    stream << "(" << op->type << ")" << op->value;
+}
+
 void IRPrinter::visit(const Cast *op) {
     stream << op->type << '(';
     print(op->value);

@@ -24,6 +24,7 @@ public:
     void visit(const FloatImm *);
     void visit(const StringImm *);
     void visit(const TestIntImm *);
+    void visit(const ApFixedImm *);
     void visit(const Cast *);
     void visit(const Variable *);
     void visit(const Add *);
@@ -160,6 +161,10 @@ void ComputeModulusRemainder::visit(const StringImm *) {
 
 void ComputeModulusRemainder::visit(const TestIntImm *op) {
     internal_error << "modulus_remainder of testimm\n";
+}
+
+void ComputeModulusRemainder::visit(const ApFixedImm *op) {
+    internal_error << "modulus_remainder of apfixedimm\n";
 }
 
 void ComputeModulusRemainder::visit(const Cast *) {

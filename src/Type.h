@@ -284,8 +284,8 @@ struct Type {
      * code: The fundamental type from an enum.
      * bits: The bit size of one element.
      * lanes: The number of vector elements in the type. */
-    Type(halide_type_code_t code, uint8_t bits, int lanes, const halide_handle_cplusplus_type *handle_type = nullptr)
-        : type(code, (uint8_t)bits, (uint16_t)lanes), handle_type(handle_type) {
+    Type(halide_type_code_t code, uint8_t bits, int lanes, const halide_handle_cplusplus_type *handle_type = nullptr, uint8_t int_bits = 0, uint8_t frac_bits = 0)
+        : type(code, (uint8_t)bits, (uint16_t)lanes, (uint8_t) int_bits, (uint8_t) frac_bits), handle_type(handle_type) {
     }
 
     /** Trivial copy constructor. */
@@ -428,6 +428,12 @@ inline Type Float(int bits, int lanes = 1) {
 /** Construct a floating-point type */
 inline Type TestInt(int bits, int lanes = 1) {
     return Type(Type::TestInt, bits, lanes);
+}
+
+
+/** Construct a fixed-point type */
+inline Type ApFixed(int bits, int lanes = 1, uint8_t int_bits = 0, uint8_t frac_bits = 0) {
+    return Type(Type::ApFixed, bits, lanes, nullptr, int_bits, frac_bits);
 }
 
 /** Construct a boolean type */

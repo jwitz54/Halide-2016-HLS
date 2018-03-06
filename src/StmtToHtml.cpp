@@ -196,6 +196,12 @@ private:
         stream << close_span();
     }
 
+    void visit(const ApFixedImm *op){
+        stream << open_span("ApFixedImm Imm");
+        stream << Expr(op);
+        stream << close_span();
+    }
+
     void visit(const Variable *op){
         stream << var(op->name);
     }

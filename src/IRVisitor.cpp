@@ -21,6 +21,9 @@ void IRVisitor::visit(const StringImm *) {
 void IRVisitor::visit(const TestIntImm *) {
 }
 
+void IRVisitor::visit(const ApFixedImm *) {
+}
+
 void IRVisitor::visit(const Cast *op) {
     op->value.accept(this);
 }
@@ -259,6 +262,9 @@ void IRGraphVisitor::visit(const StringImm *) {
 }
 
 void IRGraphVisitor::visit(const TestIntImm *) {
+}
+
+void IRGraphVisitor::visit(const ApFixedImm *) {
 }
 
 void IRGraphVisitor::visit(const Cast *op) {

@@ -27,6 +27,7 @@ public:
     EXPORT virtual void visit(const FloatImm *);
     EXPORT virtual void visit(const StringImm *);
     EXPORT virtual void visit(const TestIntImm *);
+    EXPORT virtual void visit(const ApFixedImm *);
     EXPORT virtual void visit(const Cast *);
     EXPORT virtual void visit(const Variable *);
     EXPORT virtual void visit(const Add *);
@@ -92,6 +93,7 @@ public:
     EXPORT virtual void visit(const FloatImm *);
     EXPORT virtual void visit(const StringImm *);
     EXPORT virtual void visit(const TestIntImm *);
+    EXPORT virtual void visit(const ApFixedImm *);
     EXPORT virtual void visit(const Cast *);
     EXPORT virtual void visit(const Variable *);
     EXPORT virtual void visit(const Add *);

@@ -53,6 +53,7 @@ private:
     void visit(const FloatImm *);
     void visit(const StringImm *);
     void visit(const TestIntImm *);
+    void visit(const ApFixedImm *);
     void visit(const Cast *);
     void visit(const Variable *);
     void visit(const Add *);
@@ -251,6 +252,11 @@ void IRComparer::visit(const StringImm *op) {
 
 void IRComparer::visit(const TestIntImm *op) {
     const TestIntImm *e = expr.as<TestIntImm>();
+    compare_scalar(e->value, op->value);
+}
+
+void IRComparer::visit(const ApFixedImm *op) {
+    const ApFixedImm *e = expr.as<ApFixedImm>();
     compare_scalar(e->value, op->value);
 }
 

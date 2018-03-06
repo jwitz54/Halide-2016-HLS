@@ -1181,7 +1181,7 @@ struct halide_type_of_helper< ap_int_halide<D> > {
 
 template<int D, int E>
 struct halide_type_of_helper< ap_fixed_halide<D, E> > {
-    operator halide_type_t() { return halide_type_t(halide_type_fixed, 1, D, E); }
+    operator halide_type_t() { return halide_type_t(halide_type_fixed, D + E, 1, D, E); }
 };
 
 }

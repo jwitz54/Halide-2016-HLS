@@ -45,6 +45,7 @@ void IRMutator::visit(const UIntImm *op)   {expr = op;}
 void IRMutator::visit(const FloatImm *op) {expr = op;}
 void IRMutator::visit(const StringImm *op) {expr = op;}
 void IRMutator::visit(const TestIntImm *op) {expr = op;}
+void IRMutator::visit(const ApFixedImm *op) {expr = op;}
 void IRMutator::visit(const Variable *op) {expr = op;}
 
 void IRMutator::visit(const Cast *op) {

@@ -129,8 +129,8 @@ static bool halide_rewrite_buffer(buffer_t *b, int32_t elem_size,
 #ifndef HALIDE_FUNCTION_ATTRS
 #define HALIDE_FUNCTION_ATTRS
 #endif
-static uint8_t _b0_data[] __attribute__ ((aligned (32))) = {};
-static buffer_t _b0_buffer = {0, &_b0_data[0], {10, 0, 0, 0}, {1, 0, 0, 0}, {0, 0, 0, 0}, 0, 0, 0};
+static uint8_t _b0_data[] __attribute__ ((aligned (32))) = {0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 105, 103, 110, 0, 0, 0, 0, 0, 144, 0};
+static buffer_t _b0_buffer = {0, &_b0_data[0], {10, 0, 0, 0}, {1, 0, 0, 0}, {0, 0, 0, 0}, 5, 0, 0};
 static buffer_t *_b0 = &_b0_buffer;
 
 #ifdef __cplusplus
@@ -144,7 +144,7 @@ int32_t  halide_error_constraints_make_required_region_smaller(void *, const cha
 
 
 static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_FUNCTION_ATTRS {
- ap_fixed<10,22> *_brighter = (ap_fixed<10,22> *)(_brighter_buffer->host);
+ ap_fixed<12,22> *_brighter = (ap_fixed<12,22> *)(_brighter_buffer->host);
  (void)_brighter;
  const bool _brighter_host_and_dev_are_null = (_brighter_buffer->host == nullptr) && (_brighter_buffer->dev == 0);
  (void)_brighter_host_and_dev_are_null;
@@ -174,7 +174,7 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
  (void)_brighter_stride_3;
  const int32_t _brighter_elem_size = _brighter_buffer->elem_size;
  (void)_brighter_elem_size;
- ap_fixed<10,22> *_b0 = (ap_fixed<10,22> *)(_b0_buffer->host);
+ ap_fixed<12,22> *_b0 = (ap_fixed<12,22> *)(_b0_buffer->host);
  (void)_b0;
  const bool _b0_host_and_dev_are_null = (_b0_buffer->host == nullptr) && (_b0_buffer->dev == 0);
  (void)_b0_host_and_dev_are_null;
@@ -218,26 +218,26 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
  }
  if (_b0_host_and_dev_are_null)
  {
-  bool _9 = halide_rewrite_buffer(_b0_buffer, 0, 0, 10, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  bool _9 = halide_rewrite_buffer(_b0_buffer, 4, 0, 10, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
   (void)_9;
  } // if _b0_host_and_dev_are_null
  if (_brighter_host_and_dev_are_null)
  {
-  bool _10 = halide_rewrite_buffer(_brighter_buffer, 0, _brighter_min_0, _brighter_extent_0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  bool _10 = halide_rewrite_buffer(_brighter_buffer, 4, _brighter_min_0, _brighter_extent_0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
   (void)_10;
  } // if _brighter_host_and_dev_are_null
  bool _11 = _b0_host_and_dev_are_null || _brighter_host_and_dev_are_null;
  bool _12 = !(_11);
  if (_12)
  {
-  bool _13 = _b0_elem_size == 0;
+  bool _13 = _b0_elem_size == 5;
   if (!_13)   {
-   int32_t _14 = halide_error_bad_elem_size(nullptr, "Input buffer b0", "ap_fixed<2,2>0", _b0_elem_size, 0);
+   int32_t _14 = halide_error_bad_elem_size(nullptr, "Input buffer b0", "ap_fixed<0,0>34", _b0_elem_size, 5);
    return _14;
   }
-  bool _15 = _brighter_elem_size == 0;
+  bool _15 = _brighter_elem_size == 5;
   if (!_15)   {
-   int32_t _16 = halide_error_bad_elem_size(nullptr, "Output buffer brighter", "ap_fixed<10,22>0", _brighter_elem_size, 0);
+   int32_t _16 = halide_error_bad_elem_size(nullptr, "Output buffer brighter", "ap_fixed<12,22>34", _brighter_elem_size, 5);
    return _16;
   }
   bool _17 = _b0_min_0 <= _brighter_min_0;
@@ -286,10 +286,12 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
   for (int _brighter_s0_x = _brighter_min_0; _brighter_s0_x < _brighter_min_0 + _brighter_extent_0; _brighter_s0_x++)
   {
    int32_t _41 = _brighter_s0_x - _brighter_min_0;
-   ap_fixed<2,2> _42 = _b0[_brighter_s0_x];
-   ap_fixed<10,22> _43 = (ap_fixed<10,22>)(1);
-   ap_fixed<2,2> _44 = _42 + _43;
-   _brighter[_41] = _44;
+   ap_fixed<0,0> _42 = ((ap_fixed<0,0> *)_b0)[_brighter_s0_x];
+   ap_fixed<12,22> _43 = (ap_fixed<12,22>)(_42);
+   ap_fixed<12,22> _44 = (ap_fixed<12,22>)(1);
+   ap_fixed<12,22> _45 = _43 + _44;
+   ap_fixed<0,0> _46 = (ap_fixed<0,0>)(_45);
+   ((const ap_fixed<0,0> *)_brighter)[_41] = _46;
   } // for _brighter_s0_x
  } // if _12
  return 0;
@@ -297,7 +299,7 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
 
 
 int brighter(buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
- ap_fixed<10,22> *_brighter = (ap_fixed<10,22> *)(_brighter_buffer->host);
+ ap_fixed<12,22> *_brighter = (ap_fixed<12,22> *)(_brighter_buffer->host);
  (void)_brighter;
  const bool _brighter_host_and_dev_are_null = (_brighter_buffer->host == nullptr) && (_brighter_buffer->dev == 0);
  (void)_brighter_host_and_dev_are_null;
@@ -327,10 +329,10 @@ int brighter(buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  (void)_brighter_stride_3;
  const int32_t _brighter_elem_size = _brighter_buffer->elem_size;
  (void)_brighter_elem_size;
- int32_t _45 = __brighter(_brighter_buffer, _b0_buffer);
- bool _46 = _45 == 0;
- if (!_46)  {
-  return _45;
+ int32_t _47 = __brighter(_brighter_buffer, _b0_buffer);
+ bool _48 = _47 == 0;
+ if (!_48)  {
+  return _47;
  }
  return 0;
 }
