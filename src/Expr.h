@@ -277,11 +277,11 @@ struct ApFixedImm : public ExprNode<ApFixedImm> {
     //test_int value;
     float value;
 
-    static const TestIntImm *make(Type t,  test_int value) {
+    static const ApFixedImm *make(Type t,  float value) {
         internal_assert(t.is_ap_fixed() && t.is_scalar())
-            << "TestIntImm must be a scalar Int\n";
+            << "ApFixedImm must be a scalar\n";
 
-        TestIntImm *node = new TestIntImm;
+        ApFixedImm *node = new ApFixedImm;
         node->type = t;
         node->value = value;
         return node;

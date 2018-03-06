@@ -425,11 +425,10 @@ inline Type Float(int bits, int lanes = 1) {
     return Type(Type::Float, bits, lanes);
 }
 
-/** Construct a floating-point type */
+/** Construct a test-int type */
 inline Type TestInt(int bits, int lanes = 1) {
     return Type(Type::TestInt, bits, lanes);
 }
-
 
 /** Construct a fixed-point type */
 inline Type ApFixed(int bits, int lanes = 1, uint8_t int_bits = 0, uint8_t frac_bits = 0) {

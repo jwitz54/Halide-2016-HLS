@@ -288,7 +288,7 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
    int32_t _41 = _brighter_s0_x - _brighter_min_0;
    ap_fixed<0,0> _42 = ((ap_fixed<0,0> *)_b0)[_brighter_s0_x];
    ap_fixed<12,22> _43 = (ap_fixed<12,22>)(_42);
-   ap_fixed<12,22> _44 = (ap_fixed<12,22>)(1);
+   ap_fixed<12,22> _44 = (ap_fixed<12,22>)(1.000000);
    ap_fixed<12,22> _45 = _43 + _44;
    ap_fixed<0,0> _46 = (ap_fixed<0,0>)(_45);
    ((const ap_fixed<0,0> *)_brighter)[_41] = _46;

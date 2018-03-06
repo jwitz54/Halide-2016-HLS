@@ -57,20 +57,13 @@ template <int T>
 class ap_int_halide{
 public:
 	int val;
-	//int size;
 	ap_int_halide(int initVal){
 		val = (int)initVal;
-		//size = T;
 	}
 
 	ap_int_halide(void){
 		val = 0;
-		//size = T;
 	}
-
-	#ifndef COMPILING_HALIDE_RUNTIME
-        //friend std::ostream& operator<<(std::ostream& os, const test_int_t& osVal);
-	#endif
 
 	// Casting overloading
 	operator int() {

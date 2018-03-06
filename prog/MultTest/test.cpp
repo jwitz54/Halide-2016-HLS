@@ -14,16 +14,10 @@ int main(int argc, char **argv) {
 
     Var x;
     Func mult;
-    //Func toTestInt;
-    //toTestInt(x) = cast(TestInt(8), input(x)); 
-    //brighter(x) = toTestInt(x) + 1;
-    //brighter(x) = cast(TestInt(8), input(x)) + 1;
     mult(x) = input1(x) * input2(x) ;
-    //brighter(x) = input(x) + 1;
 
     mult.compile_to_c("mult.cpp", {}, "mult");
     mult.compile_to_header("mult.h", {}, "mult");
-    //mult.compile_to_static_library("mult", {}, "mult");
 
     printf("Success!\n");
     return 0;

@@ -147,6 +147,7 @@ protected:
     void visit(const StringImm *);
     void visit(const FloatImm *);
     void visit(const TestIntImm *);
+    void visit(const ApFixedImm *);
     void visit(const Cast *);
     void visit(const Add *);
     void visit(const Sub *);
