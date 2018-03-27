@@ -286,6 +286,7 @@ struct Type {
      * lanes: The number of vector elements in the type. */
     Type(halide_type_code_t code, uint8_t bits, int lanes, const halide_handle_cplusplus_type *handle_type = nullptr, uint8_t int_bits = 0, uint8_t frac_bits = 0)
         : type(code, (uint8_t)bits, (uint16_t)lanes, (uint8_t) int_bits, (uint8_t) frac_bits), handle_type(handle_type) {
+        //printf("b: %i, f %i, c %i\n", int_bits, frac_bits, code);
     }
 
     /** Trivial copy constructor. */

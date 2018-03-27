@@ -232,12 +232,12 @@ static int __brighter(buffer_t *_brighter_buffer, buffer_t *_b0_buffer) HALIDE_F
  {
   bool _13 = _b0_elem_size == 5;
   if (!_13)   {
-   int32_t _14 = halide_error_bad_elem_size(nullptr, "Input buffer b0", "ap_fixed<0,0>34", _b0_elem_size, 5);
+   int32_t _14 = halide_error_bad_elem_size(nullptr, "Input buffer b0", "pap_fixed<0,0>34", _b0_elem_size, 5);
    return _14;
   }
   bool _15 = _brighter_elem_size == 5;
   if (!_15)   {
-   int32_t _16 = halide_error_bad_elem_size(nullptr, "Output buffer brighter", "ap_fixed<12,22>34", _brighter_elem_size, 5);
+   int32_t _16 = halide_error_bad_elem_size(nullptr, "Output buffer brighter", "pap_fixed<12,22>34", _brighter_elem_size, 5);
    return _16;
   }
   bool _17 = _b0_min_0 <= _brighter_min_0;

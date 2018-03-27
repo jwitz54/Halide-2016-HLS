@@ -1,0 +1,941 @@
+g++ test.cpp -g -I ../../include -I ../../tools -L ../../bin -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o test -std=c++11
+LD_LIBRARY_PATH=../../bin ./test
+Section: 
+Section: .interp
+Section: .note.ABI-tag
+Section: .note.gnu.build-id
+Section: .gnu.hash
+Section: .dynsym
+Section: .dynstr
+Section: .gnu.version
+Section: .gnu.version_r
+Section: .rela.dyn
+Section: .rela.plt
+Section: .init
+Section: .plt
+Section: .plt.got
+Section: .text
+Section: .fini
+Section: .rodata
+Section: .eh_frame_hdr
+Section: .eh_frame
+Section: .gcc_except_table
+Section: .init_array
+Section: .fini_array
+Section: .jcr
+Section: .dynamic
+Section: .got
+Section: .got.plt
+Section: .data
+Section: .bss
+Section: .comment
+Section: .debug_aranges
+Section: .debug_info
+Section: .debug_abbrev
+Section: .debug_line
+Section: .debug_str
+Section: .debug_ranges
+Section: .shstrtab
+Section: .symtab
+Section: .strtab
+ty.c 5, ty.i 12, ty.f 22
+Creating initial loop nests...
+Injecting realization of brighter
+InjectRealization of brighter entering for loop over .__root
+Found compute level
+func brighter
+Value 0 = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+Site 0 = brighter.s0.x
+Found store level
+for (.__root, 0, 1) {
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+    let brighter.s0.__outermost.loop_extent = 1
+    let brighter.s0.__outermost.loop_max = 0
+    let brighter.s0.__outermost.loop_min = 0
+    for (brighter.s0.__outermost, brighter.s0.__outermost.loop_min, brighter.s0.__outermost.loop_extent) {
+      for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+        brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+      }
+    }
+  }
+  0
+}
+
+Lowering after creating initial loop nests:
+produce brighter {
+  let brighter.s0.x.loop_max = brighter.s0.x.max
+  let brighter.s0.x.loop_min = brighter.s0.x.min
+  let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+  for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+    brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+  }
+}
+0
+
+Skipping injecting memoization...
+Injecting prefetches...
+Lowering after injecting prefetches:
+produce brighter {
+  let brighter.s0.x.loop_max = brighter.s0.x.max
+  let brighter.s0.x.loop_min = brighter.s0.x.min
+  let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+  for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+    brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+  }
+}
+0
+
+
+Injecting tracing...
+Lowering after injecting tracing:
+produce brighter {
+  let brighter.s0.x.loop_max = brighter.s0.x.max
+  let brighter.s0.x.loop_min = brighter.s0.x.min
+  let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+  for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+    brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+  }
+}
+0
+
+Adding checks for parameters
+Lowering after injecting parameter checks:
+produce brighter {
+  let brighter.s0.x.loop_max = brighter.s0.x.max
+  let brighter.s0.x.loop_min = brighter.s0.x.min
+  let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+  for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+    brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+  }
+}
+0
+
+Computing bounds of each function's value
+Bounds on value 0 for func brighter are: neg_inf, pos_inf
+Adding checks for images
+In image b0 region touched is:
+Injecting constraints for b0.0
+In image brighter region touched is:
+Injecting constraints for brighter.0
+Lowering after injecting image checks:
+let b0.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((b0.min.0.proposed <= b0.min.0.required) && (((b0.min.0.proposed + b0.extent.0.proposed) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, b0.min.0.proposed, ((b0.min.0.proposed + b0.extent.0.proposed) - 1), b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.proposed + brighter.extent.0.proposed) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) - 1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, b0.min.0.proposed, b0.extent.0.proposed, b0.stride.0.proposed)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, brighter.stride.0.proposed)
+}
+if (!(((uint1)0 || b0.host_and_dev_are_null) || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0 + b0.extent.0) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1))), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1), b0.min.0, ((b0.min.0 + b0.extent.0) - 1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0 + brighter.extent.0) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1))), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) - 1)))
+  assert((b0.stride.0 == b0.stride.0.constrained), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", b0.stride.0.constrained))
+  assert((b0.min.0 == b0.min.0.constrained), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", b0.min.0.constrained))
+  assert((b0.extent.0 == b0.extent.0.constrained), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", b0.extent.0.constrained))
+  assert((brighter.stride.0 == brighter.stride.0.constrained), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", brighter.stride.0.constrained))
+  let b0.total_extent.0 = int64(b0.extent.0.constrained)
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert(((int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("b0", (int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)), (int64)2147483647))
+  assert(((int64(brighter.extent.0)*int64(brighter.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", (int64(brighter.extent.0)*int64(brighter.stride.0.constrained)), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+  0
+}
+
+Performing computation bounds inference...
+Lowering after computation bounds inference:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) - 1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((b0.min.0.proposed <= b0.min.0.required) && (((b0.min.0.proposed + b0.extent.0.proposed) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, b0.min.0.proposed, ((b0.min.0.proposed + b0.extent.0.proposed) - 1), b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.proposed + brighter.extent.0.proposed) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) - 1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, b0.min.0.proposed, b0.extent.0.proposed, b0.stride.0.proposed)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, brighter.stride.0.proposed)
+}
+if (!(((uint1)0 || b0.host_and_dev_are_null) || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0 + b0.extent.0) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1))), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1), b0.min.0, ((b0.min.0 + b0.extent.0) - 1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0 + brighter.extent.0) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1))), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) - 1)))
+  assert((b0.stride.0 == b0.stride.0.constrained), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", b0.stride.0.constrained))
+  assert((b0.min.0 == b0.min.0.constrained), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", b0.min.0.constrained))
+  assert((b0.extent.0 == b0.extent.0.constrained), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", b0.extent.0.constrained))
+  assert((brighter.stride.0 == brighter.stride.0.constrained), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", brighter.stride.0.constrained))
+  let b0.total_extent.0 = int64(b0.extent.0.constrained)
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert(((int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("b0", (int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)), (int64)2147483647))
+  assert(((int64(brighter.extent.0)*int64(brighter.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", (int64(brighter.extent.0)*int64(brighter.stride.0.constrained)), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+  0
+}
+
+Performing sliding window optimization...
+Lowering after sliding window:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) - 1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((b0.min.0.proposed <= b0.min.0.required) && (((b0.min.0.proposed + b0.extent.0.proposed) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, b0.min.0.proposed, ((b0.min.0.proposed + b0.extent.0.proposed) - 1), b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.proposed + brighter.extent.0.proposed) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) - 1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, b0.min.0.proposed, b0.extent.0.proposed, b0.stride.0.proposed)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, brighter.stride.0.proposed)
+}
+if (!(((uint1)0 || b0.host_and_dev_are_null) || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0 + b0.extent.0) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1))), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1), b0.min.0, ((b0.min.0 + b0.extent.0) - 1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0 + brighter.extent.0) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1))), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) - 1)))
+  assert((b0.stride.0 == b0.stride.0.constrained), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", b0.stride.0.constrained))
+  assert((b0.min.0 == b0.min.0.constrained), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", b0.min.0.constrained))
+  assert((b0.extent.0 == b0.extent.0.constrained), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", b0.extent.0.constrained))
+  assert((brighter.stride.0 == brighter.stride.0.constrained), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", brighter.stride.0.constrained))
+  let b0.total_extent.0 = int64(b0.extent.0.constrained)
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert(((int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("b0", (int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)), (int64)2147483647))
+  assert(((int64(brighter.extent.0)*int64(brighter.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", (int64(brighter.extent.0)*int64(brighter.stride.0.constrained)), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+  0
+}
+
+Performing allocation bounds inference...
+Lowering after allocation bounds inference:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) - 1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((b0.min.0.proposed <= b0.min.0.required) && (((b0.min.0.proposed + b0.extent.0.proposed) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, b0.min.0.proposed, ((b0.min.0.proposed + b0.extent.0.proposed) - 1), b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.proposed + brighter.extent.0.proposed) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) - 1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, b0.min.0.proposed, b0.extent.0.proposed, b0.stride.0.proposed)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, brighter.stride.0.proposed)
+}
+if (!(((uint1)0 || b0.host_and_dev_are_null) || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0 + b0.extent.0) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1))), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1), b0.min.0, ((b0.min.0 + b0.extent.0) - 1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0 + brighter.extent.0) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1))), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) - 1)))
+  assert((b0.stride.0 == b0.stride.0.constrained), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", b0.stride.0.constrained))
+  assert((b0.min.0 == b0.min.0.constrained), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", b0.min.0.constrained))
+  assert((b0.extent.0 == b0.extent.0.constrained), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", b0.extent.0.constrained))
+  assert((brighter.stride.0 == brighter.stride.0.constrained), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", brighter.stride.0.constrained))
+  let b0.total_extent.0 = int64(b0.extent.0.constrained)
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert(((int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("b0", (int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)), (int64)2147483647))
+  assert(((int64(brighter.extent.0)*int64(brighter.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", (int64(brighter.extent.0)*int64(brighter.stride.0.constrained)), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+  0
+}
+
+Removing code that depends on undef values...
+Lowering after removing code that depends on undef values:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) - 1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((b0.min.0.proposed <= b0.min.0.required) && (((b0.min.0.proposed + b0.extent.0.proposed) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, b0.min.0.proposed, ((b0.min.0.proposed + b0.extent.0.proposed) - 1), b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.proposed + brighter.extent.0.proposed) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) - 1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, b0.min.0.proposed, b0.extent.0.proposed, b0.stride.0.proposed)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, brighter.stride.0.proposed)
+}
+if (!(((uint1)0 || b0.host_and_dev_are_null) || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0 + b0.extent.0) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1))), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1), b0.min.0, ((b0.min.0 + b0.extent.0) - 1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0 + brighter.extent.0) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1))), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) - 1)))
+  assert((b0.stride.0 == b0.stride.0.constrained), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", b0.stride.0.constrained))
+  assert((b0.min.0 == b0.min.0.constrained), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", b0.min.0.constrained))
+  assert((b0.extent.0 == b0.extent.0.constrained), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", b0.extent.0.constrained))
+  assert((brighter.stride.0 == brighter.stride.0.constrained), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", brighter.stride.0.constrained))
+  let b0.total_extent.0 = int64(b0.extent.0.constrained)
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert(((int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("b0", (int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)), (int64)2147483647))
+  assert(((int64(brighter.extent.0)*int64(brighter.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", (int64(brighter.extent.0)*int64(brighter.stride.0.constrained)), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+  0
+}
+
+
+Uniquifying variable names...
+Lowering after uniquifying variable names:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) - 1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((b0.min.0.proposed <= b0.min.0.required) && (((b0.min.0.proposed + b0.extent.0.proposed) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, b0.min.0.proposed, ((b0.min.0.proposed + b0.extent.0.proposed) - 1), b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.proposed + brighter.extent.0.proposed) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) - 1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, b0.min.0.proposed, b0.extent.0.proposed, b0.stride.0.proposed)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, brighter.stride.0.proposed)
+}
+if (!(((uint1)0 || b0.host_and_dev_are_null) || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0 + b0.extent.0) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1))), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1), b0.min.0, ((b0.min.0 + b0.extent.0) - 1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0 + brighter.extent.0) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1))), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) - 1)))
+  assert((b0.stride.0 == b0.stride.0.constrained), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", b0.stride.0.constrained))
+  assert((b0.min.0 == b0.min.0.constrained), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", b0.min.0.constrained))
+  assert((b0.extent.0 == b0.extent.0.constrained), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", b0.extent.0.constrained))
+  assert((brighter.stride.0 == brighter.stride.0.constrained), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", brighter.stride.0.constrained))
+  let b0.total_extent.0 = int64(b0.extent.0.constrained)
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert(((int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("b0", (int64(b0.extent.0.constrained)*int64(b0.stride.0.constrained)), (int64)2147483647))
+  assert(((int64(brighter.extent.0)*int64(brighter.stride.0.constrained)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", (int64(brighter.extent.0)*int64(brighter.stride.0.constrained)), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max + 1) - brighter.s0.x.min)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+  0
+}
+
+
+Performing storage folding optimization...
+Lowering after storage folding:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) + -1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((0 <= b0.min.0.required) && (((0 + 10) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, ((0 + 10) - 1), b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.proposed + brighter.extent.0.proposed) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) - 1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, 1)
+}
+if (!(((uint1)0 || b0.host_and_dev_are_null) || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0 + b0.extent.0) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1))), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1), b0.min.0, ((b0.min.0 + b0.extent.0) - 1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0 + brighter.extent.0) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1))), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) - 1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  let b0.total_extent.0 = (int64)10
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert(((int64(10)*int64(1)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("b0", (int64(10)*int64(1)), (int64)2147483647))
+  assert(((int64(brighter.extent.0)*int64(1)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", (int64(brighter.extent.0)*int64(1)), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+  0
+}
+
+Injecting debug_to_file calls...
+Lowering after injecting debug_to_file calls:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) + -1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((0 <= b0.min.0.required) && (((0 + 10) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, ((0 + 10) - 1), b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.proposed + brighter.extent.0.proposed) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1)))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) - 1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, 1)
+}
+if (!(((uint1)0 || b0.host_and_dev_are_null) || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0 + b0.extent.0) - 1) >= ((b0.min.0.required + b0.extent.0.required) - 1))), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) - 1), b0.min.0, ((b0.min.0 + b0.extent.0) - 1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0 + brighter.extent.0) - 1) >= ((brighter.min.0.required + brighter.extent.0.required) - 1))), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) - 1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) - 1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  let b0.total_extent.0 = (int64)10
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert(((int64(10)*int64(1)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("b0", (int64(10)*int64(1)), (int64)2147483647))
+  assert(((int64(brighter.extent.0)*int64(1)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", (int64(brighter.extent.0)*int64(1)), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+  0
+}
+
+Simplifying...
+Lowering after first simplification:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) + -1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((0 <= b0.min.0.required) && ((b0.min.0.required + b0.extent.0.required) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) + -1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.required + brighter.extent.0.required) - brighter.extent.0.proposed) <= brighter.min.0.proposed))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) + -1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0.required + b0.extent.0.required) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0.required + brighter.extent.0.required) - brighter.extent.0) <= brighter.min.0)), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) + -1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  let b0.total_extent.0 = (int64)10
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+}
+
+
+Dynamically skipping stages...
+Lowering after dynamically skipping stages:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) + -1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((0 <= b0.min.0.required) && ((b0.min.0.required + b0.extent.0.required) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) + -1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.required + brighter.extent.0.required) - brighter.extent.0.proposed) <= brighter.min.0.proposed))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) + -1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0.required + b0.extent.0.required) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0.required + brighter.extent.0.required) - brighter.extent.0) <= brighter.min.0)), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) + -1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  let b0.total_extent.0 = (int64)10
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter(brighter.s0.x) = (b0(brighter.s0.x) + (pap_fixed<12,22>34)1.000000)
+    }
+  }
+}
+
+
+Performing storage flattening...
+Lowering after storage flattening:
+let brighter.s0.x.max = ((brighter.min.0 + brighter.extent.0) + -1)
+let brighter.s0.x.min = brighter.min.0
+let b0.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let b0.min.0.required = brighter.s0.x.min
+let b0.stride.0.required = 1
+let brighter.extent.0.required = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+let brighter.min.0.required = brighter.s0.x.min
+let brighter.stride.0.required = 1
+let b0.stride.0.constrained = 1
+let b0.min.0.constrained = 0
+let b0.extent.0.constrained = 10
+let brighter.stride.0.constrained = 1
+let b0.stride.0.proposed = 1
+let b0.min.0.proposed = 0
+let b0.extent.0.proposed = 10
+let brighter.stride.0.proposed = 1
+let brighter.min.0.proposed = brighter.min.0.required
+let brighter.extent.0.proposed = brighter.extent.0.required
+assert((!b0.host_and_dev_are_null || ((0 <= b0.min.0.required) && ((b0.min.0.required + b0.extent.0.required) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) + -1)))
+assert((!brighter.host_and_dev_are_null || ((brighter.min.0.proposed <= brighter.min.0.required) && (((brighter.min.0.required + brighter.extent.0.required) - brighter.extent.0.proposed) <= brighter.min.0.proposed))), halide_error_constraints_make_required_region_smaller("Output buffer brighter", 0, brighter.min.0.proposed, ((brighter.min.0.proposed + brighter.extent.0.proposed) + -1), brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0.proposed, brighter.extent.0.proposed, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= b0.min.0.required) && (((b0.min.0.required + b0.extent.0.required) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, b0.min.0.required, ((b0.min.0.required + b0.extent.0.required) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert(((brighter.min.0 <= brighter.min.0.required) && (((brighter.min.0.required + brighter.extent.0.required) - brighter.extent.0) <= brighter.min.0)), halide_error_access_out_of_bounds("Output buffer brighter", 0, brighter.min.0.required, ((brighter.min.0.required + brighter.extent.0.required) + -1), brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  let b0.total_extent.0 = (int64)10
+  let brighter.total_extent.0 = int64(brighter.extent.0)
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    let brighter.s0.x.loop_max = brighter.s0.x.max
+    let brighter.s0.x.loop_min = brighter.s0.x.min
+    let brighter.s0.x.loop_extent = ((brighter.s0.x.max - brighter.s0.x.min) + 1)
+    for (brighter.s0.x, brighter.s0.x.loop_min, brighter.s0.x.loop_extent) {
+      brighter[((0 + (brighter.s0.x*brighter.stride.0.constrained)) - (0 + (brighter.min.0*brighter.stride.0.constrained)))] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[((0 + (brighter.s0.x*b0.stride.0.constrained)) - (0 + (b0.min.0.constrained*b0.stride.0.constrained)))]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Skipping rewriting memoized allocations...
+Simplifying...
+Lowering after second simplifcation:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Unrolling...
+Lowering after unrolling:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Vectorizing...
+Lowering after vectorizing:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Detecting vector interleavings...
+Lowering after rewriting vector interleavings:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Partitioning loops to simplify boundary conditions...
+Lowering after partitioning loops:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Trimming loops to the region over which they do something...
+
+
+ ***** Trim no ops in loop over brighter.s0.x
+Considering store: brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+
+Condition is (uint1)0
+Simplified condition is (uint1)0
+Lowering after loop trimming:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Injecting early frees...
+Lowering after injecting early frees:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Simplifying...
+Lowering after final simplification:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+
+Splitting off Hexagon offload...
+Lowering after splitting off Hexagon offload:
+assert((!b0.host_and_dev_are_null || ((0 <= brighter.min.0) && ((brighter.min.0 + brighter.extent.0) <= 10))), halide_error_constraints_make_required_region_smaller("Input buffer b0", 0, 0, 9, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1)))
+if (b0.host_and_dev_are_null) {
+  rewrite_buffer(b0.buffer, 4, 0, 10, 1)
+}
+if (brighter.host_and_dev_are_null) {
+  rewrite_buffer(brighter.buffer, 4, brighter.min.0, brighter.extent.0, 1)
+}
+if (!(b0.host_and_dev_are_null || brighter.host_and_dev_are_null)) {
+  assert((b0.elem_size == 5), halide_error_bad_elem_size("Input buffer b0", "pap_fixed<0,0>34", b0.elem_size, 5))
+  assert((brighter.elem_size == 5), halide_error_bad_elem_size("Output buffer brighter", "pap_fixed<12,22>34", brighter.elem_size, 5))
+  assert(((b0.min.0 <= brighter.min.0) && (((brighter.min.0 + brighter.extent.0) - b0.extent.0) <= b0.min.0)), halide_error_access_out_of_bounds("Input buffer b0", 0, brighter.min.0, ((brighter.min.0 + brighter.extent.0) + -1), b0.min.0, ((b0.min.0 + b0.extent.0) + -1)))
+  assert((b0.stride.0 == 1), halide_error_constraint_violated("b0.stride.0", b0.stride.0, "1", 1))
+  assert((b0.min.0 == 0), halide_error_constraint_violated("b0.min.0", b0.min.0, "0", 0))
+  assert((b0.extent.0 == 10), halide_error_constraint_violated("b0.extent.0", b0.extent.0, "10", 10))
+  assert((brighter.stride.0 == 1), halide_error_constraint_violated("brighter.stride.0", brighter.stride.0, "1", 1))
+  assert((int64(brighter.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("brighter", int64(brighter.extent.0), (int64)2147483647))
+  produce brighter {
+    for (brighter.s0.x, brighter.min.0, brighter.extent.0) {
+      brighter[(brighter.s0.x - brighter.min.0)] = pap_fixed<0,0>40((pap_fixed<12,22>34(b0[brighter.s0.x]) + (pap_fixed<12,22>34)1.000000))
+    }
+  }
+}
+
+Inferred argument: pap_fixed<12,22>34 b0
+Inferred argument: handle64 __user_context
+Embedding image b0
+Module.compile(): c_source_name brighter.cpp
+Reusing old module
+Inferred argument: pap_fixed<12,22>34 b0
+Inferred argument: handle64 __user_context
+Embedding image b0
+Module.compile(): c_header_name brighter.h
+Success!

@@ -471,6 +471,7 @@ Stmt build_produce(Function f, const Target &target) {
                 Parameter p(b.type(), true, b.dimensions(), b.name());
                 p.set_buffer(b);
                 string buf_name = b.name() + ".buffer";
+                std::cout << "buffer" << buf_name << std::endl;
                 Expr buf = Variable::make(type_of<struct buffer_t *>(), buf_name, p);
                 extern_call_args.push_back(buf);
                 buffers_to_annotate.push_back(buf);

@@ -11,6 +11,7 @@
 #include <cassert>
 #include <atomic>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "HalideRuntime.h"
@@ -144,6 +145,7 @@ class Buffer {
     /** Get the Halide type of T. Callers should not use the result if
      * T is void. */
     static halide_type_t static_halide_type() {
+        std::cout << "static \n";
         return halide_type_of<typename std::remove_cv<not_void_T>::type>();
     }
 
@@ -395,10 +397,12 @@ public:
     /** Make a buffer from a buffer_t */
     Buffer(const buffer_t &buf) : ty(static_halide_type()) {
         static_assert(!T_is_void, "Can't construct an Buffer<void> from a buffer_t. Type is unknown.");
+        printf("1\n");
         initialize_from_buffer(buf);
     }
 
     Buffer(halide_type_t t, const buffer_t &buf) : ty(t) {
+        printf("2\n");
         initialize_from_buffer(buf);
     }
 
@@ -608,6 +612,7 @@ public:
         static_assert(sizeof...(rest) < D,
                       "Too many arguments to constructor. Use Buffer<T, D>, "
                       "where D is at least the desired number of dimensions");
+        printf("ty.c %i, ty.i %i, ty.f %i\n", ty.code, ty.int_bits, ty.frac_bits);
         initialize_shape(0, first, rest...);
         buf.elem_size = ty.bytes();
         dims = 1 + (int)(sizeof...(rest));

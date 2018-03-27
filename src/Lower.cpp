@@ -83,6 +83,7 @@ Stmt lower(vector<Function> outputs, const string &pipeline_name, const Target &
     // Compute a realization order
     vector<string> order = realization_order(outputs, env);
 
+
     // Try to simplify the RHS/LHS of a function definition by propagating its
     // specializations' conditions
     simplify_specializations(env);
